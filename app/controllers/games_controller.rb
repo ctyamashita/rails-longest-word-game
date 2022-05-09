@@ -15,8 +15,7 @@ class GamesController < ApplicationController
     letters_array = params[:letters].chars.select { |char| char.match(/[a-z]/) }
     # checking valid word
     valid_answer = attempt.chars.all? { |letter| letters_array.include?(letter) }
-    url = "https://wagon-dictionary.herokuapp.com/#{attempt}"
-    json = URI.open(url).read
+    json = URI.open("https://wagon-dictionary.herokuapp.com/#{attempt}").read
     hash = JSON.parse(json)
     # ##
     @result = "Sorry but #{attempt} does not seem to be a valid English word."
