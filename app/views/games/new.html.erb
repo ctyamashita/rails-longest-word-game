@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="mt-5">LONGEST WORD GAME</h1>
+
+  <div class="list">
+    <% @letters.each do |letter| %>
+      <span class="letters-card"><%= letter.upcase %></span>
+    <% end %>
+  </div>
+
+  <form action="/score" method="post" class="mt-5">
+    <div class="input-group mb-3">
+      <input type="text" name="attempt" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>
+      <input type="hidden" value="<%= @letters %>" name="letters">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </div>
+  </form>
+</div>
